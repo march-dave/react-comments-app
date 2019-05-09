@@ -1,4 +1,4 @@
-# react-for-heroku
+# react-comments-app
 A simple deployment ready webpack-react application for heroku
 
 ## Instructions
