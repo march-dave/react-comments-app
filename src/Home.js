@@ -18,7 +18,7 @@ class Home extends Component {
         }
       }
     axios
-    .get("https://api-comments.azurewebsites.net/api/Comments", config)
+    .get("https://api-comments.azurewebsites.net/api/Comments")
       .then(response => {
         console.log(JSON.stringify(response.data));
 
