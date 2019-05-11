@@ -10,7 +10,8 @@ class Home extends Component {
 
   componentDidMount() {
     axios
-      .get("https://comments-api.azurewebsites.net/api/Comments")
+      // .get("https://comments-api.azurewebsites.net/api/Comments")
+       .get("https://api-comments.azurewebsites.net/api/Comments")
       .then(response => {
         console.log(JSON.stringify(response.data));
 
