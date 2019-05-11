@@ -9,9 +9,9 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    // fetch("https://api-comments.azurewebsites.net/api/Comments")
+    // fetch("https://comments-api.azurewebsites.net/api/Comments")
     axios
-    .get("https://comments-api.azurewebsites.net/api/Comments")
+    .get("https://api-comments.azurewebsites.net/api/Comments")
       .then(response => {
         console.log(JSON.stringify(response.data));
 
