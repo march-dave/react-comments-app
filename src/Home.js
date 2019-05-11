@@ -8,18 +8,37 @@ import Pagination from "rc-pagination";
 class Home extends Component {
   state = {
     comments: [],
-    current: 3
+    current: 3,
+
+    currentPage: 1,
+    todosPerPage: 3,
+    // todos: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k"],
+    // todos: [
+    //   { id: 31, name: "Dave Lee", body: "Body" },
+    //   { id: 30, name: "Dave Lee", body: "Body" },
+    //   { id: 29, name: "Dave Lee", body: "Body" },
+    //   { id: 28, name: "Dave Lee", body: "Body" }
+    // ]
+    todos: ["1dave", "john", "jane","2dave", "john", "jane","3dave", "john", "jane","4dave", "john", "jane"]
   };
 
   componentDidMount() {
     axios
       .get("https://api-comments.azurewebsites.net/api/Comments")
       .then(response => {
+        console.log(response.data);
         this.setState({
           comments: response.data
+          // todos: response.data
         });
       });
   }
+
+  handleClick = event => {
+    this.setState({
+      currentPage: Number(event.target.id)
+    });
+  };
 
   onChange = page => {
     console.log(page);
@@ -29,6 +48,31 @@ class Home extends Component {
   };
 
   render() {
+    const { todos, currentPage, todosPerPage } = this.state;
+
+    // Logic for displaying current todos
+    const indexOfLastTodo = currentPage * todosPerPage;
+    const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
+    const currentTodos = todos.slice(indexOfFirstTodo, indexOfLastTodo);
+
+    const renderTodos = currentTodos.map((todo, index) => {
+      return <li key={index}>{todo}</li>;
+    });
+
+    // Logic for displaying page numbers
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(todos.length / todosPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
+    const renderPageNumbers = pageNumbers.map(number => {
+      return (
+        <li key={number} id={number} onClick={this.handleClick}>
+          {number}
+        </li>
+      );
+    });
+
     const list = listSort(this.state.comments).map((item, index) => (
       <div key={`${index + 1}`}>
         {
@@ -53,6 +97,9 @@ class Home extends Component {
     return (
       <BodyStyle>
         <div className="contents">
+          <ul>{renderTodos}</ul>
+          <ul id="page-numbers">{renderPageNumbers}</ul>
+
           <div style={{ marginLeft: "200px" }}>
             <Pagination
               onChange={this.onChange}
@@ -73,5 +120,17 @@ const BodyStyle = styled.div`
   .contents {
     width: 580px;
     margin: 20px auto;
+  }
+
+  #page-numbers {
+    list-style: none;
+    display: flex;
+  }
+
+  #page-numbers > li {
+    margin-right: 0.3em;
+    color: blue;
+    user-select: none;
+    cursor: pointer;
   }
 `;
