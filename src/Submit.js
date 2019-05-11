@@ -41,8 +41,8 @@ class Submit extends Component {
 
     axios
       .post("https://api-comments.azurewebsites.net/api/Comments", {
-        "name": this.state.name,
-        "body": this.state.body
+        name: this.state.name,
+        body: this.state.body
       })
       .then(response => {
         toast(
