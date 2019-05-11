@@ -11,7 +11,7 @@ class Header extends Component {
             Home
           </NavLink>
           <NavLink to="/submit" className="item" activeClassName="active">
-            Submit
+            All List
           </NavLink>
         </div>
       </BodyStyle>
