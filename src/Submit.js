@@ -31,7 +31,7 @@ class Submit extends Component {
           }
         }
 
-        let date = {
+        let data = {
           "name": "Dave",
           "body": "Dave Body"
         }
