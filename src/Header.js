@@ -8,13 +8,10 @@ class Header extends Component {
       <BodyStyle>
         <div className="header">
           <NavLink exact to="/" className="item" activeClassName="active">
-            Home
-          </NavLink>
-          <NavLink to="/submit" className="item" activeClassName="active">
             All List
           </NavLink>
-          <NavLink to="/Paginations" className="item" activeClassName="active">
-            Paginations
+          <NavLink to="/submit" className="item" activeClassName="active">
+            Input
           </NavLink>
         </div>
       </BodyStyle>
