@@ -31,11 +31,18 @@ class Submit extends Component {
           }
         }
 
+        let date = {
+          "name": "Dave",
+          "body": "Dave Body"
+        }
+
+        // {
+        //   "name": this.state.name,
+        //   "body": this.state.body
+        // }
+
     axios
-      .post("https://api-comments.azurewebsites.net/api/Comments", {
-        "name": this.state.name,
-        "body": this.state.body
-      })
+      .post("https://api-comments.azurewebsites.net/api/Comments", data)
       .then(response => {
         toast(
           "Your name and body has been save. Plese go Home tab"
