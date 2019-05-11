@@ -24,8 +24,7 @@ class Submit extends Component {
 
     // .post("https://comments-api.azurewebsites.net/api/Comments", {
 
-    // axios
-    fetch
+    axios
       .post("https://api-comments.azurewebsites.net/api/Comments", {
         name: this.state.name,
         body: this.state.body
