@@ -10,8 +10,15 @@ class Home extends Component {
 
   componentDidMount() {
     // fetch("https://comments-api.azurewebsites.net/api/Comments")
+
+    let config = {
+      headers: {
+        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*',
+        }
+      }
     axios
-    .get("https://api-comments.azurewebsites.net/api/Comments")
+    .get("https://api-comments.azurewebsites.net/api/Comments", config)
       .then(response => {
         console.log(JSON.stringify(response.data));
 
