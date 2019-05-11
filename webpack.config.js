@@ -34,7 +34,7 @@ module.exports = {
               importLoaders: 1,
               localIdentName: "[name]_[local]_[hash:base64]",
               sourceMap: true,
-              minimize: true
+              // minimize: true
             }
           }
         ]

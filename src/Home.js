@@ -2,31 +2,31 @@ import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { listSort } from "./Utils";
+import Pagination from "rc-pagination";
+// import 'rc-pagination/assets/index.css';
 
 class Home extends Component {
   state = {
-    comments: []
+    comments: [],
+    current: 3
   };
 
   componentDidMount() {
-    // fetch("https://comments-api.azurewebsites.net/api/Comments")
-
-    let config = {
-      headers: {
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*',
-        }
-      }
     axios
-    .get("https://api-comments.azurewebsites.net/api/Comments")
+      .get("https://api-comments.azurewebsites.net/api/Comments")
       .then(response => {
-        console.log(JSON.stringify(response.data));
-
         this.setState({
           comments: response.data
         });
       });
   }
+
+  onChange = page => {
+    console.log(page);
+    this.setState({
+      current: page
+    });
+  };
 
   render() {
     const list = listSort(this.state.comments).map((item, index) => (
@@ -42,9 +42,9 @@ class Home extends Component {
               paddingTop: "15px"
             }}
           >
-            <div style={{ flexBasis: "150px"}}>{item.id}</div>
-            <div style={{ "flexBasis": "150px" }}>{item.name}</div>
-            <div style={{ "flexBasis": "150px" }}>{item.body}</div>
+            <div style={{ flexBasis: "150px" }}>{item.id}</div>
+            <div style={{ flexBasis: "150px" }}>{item.name}</div>
+            <div style={{ flexBasis: "150px" }}>{item.body}</div>
           </div>
         }
       </div>
@@ -52,7 +52,16 @@ class Home extends Component {
 
     return (
       <BodyStyle>
-        <div className="contents">{list}</div>{" "}
+        <div className="contents">
+          <div style={{ marginLeft: "200px" }}>
+            <Pagination
+              onChange={this.onChange}
+              current={this.state.current}
+              total={25}
+            />
+          </div>
+          {list}
+        </div>
       </BodyStyle>
     );
   }

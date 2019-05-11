@@ -22,34 +22,13 @@ class Submit extends Component {
   handleSubmit = data => {
     data.preventDefault();
 
-    // .post("https://comments-api.azurewebsites.net/api/Comments", {
-
-      let config = {
-        headers: {
-          "Content-Type": "application/json",
-          'Access-Control-Allow-Origin': '*',
-          }
-        }
-
-        // let data = {
-        //   "name": "Dave",
-        //   "body": "Dave Body"
-        // }
-
-        // {
-        //   "name": this.state.name,
-        //   "body": this.state.body
-        // }
-
     axios
       .post("https://api-comments.azurewebsites.net/api/Comments", {
-          "name": this.state.name,
-          "body": this.state.body
-        })
+        name: this.state.name,
+        body: this.state.body
+      })
       .then(response => {
-        toast(
-          "Your name and body has been save. Plese go Home tab"
-        );
+        toast("Your name and body has been save. Plese go Home tab");
       });
   };
 
@@ -114,14 +93,14 @@ const BodyStyle = styled.div`
     color: white;
     background: black;
   }
-  
+
   .Toastify__toast-container--top-center {
     top: -0.3em;
     left: 0;
     margin: 0 auto;
     width: 100%;
   }
-  
+
   .Toastify__toast--default {
     background: black;
     color: #aaa;
@@ -130,30 +109,30 @@ const BodyStyle = styled.div`
     width: 70vw;
     margin: 0 auto;
   }
-  
+
   .Toastify__close-button {
     font-weight: normal;
     font-size: 16px;
     width: auto;
   }
-  
+
   .Toastify__close-button--default {
     color: white;
     opacity: 0.5;
   }
-  
+
   .toast-container {
     top: 1em;
-      left: 50%;
-      margin-left: -160px;
-  
-      z-index: 9999;
-      position: fixed;
-      padding: 4px;
-      width: 320px;
-      box-sizing: border-box;
-      color: #fff;
-      background: #000;
-      align-self: flex-start;
+    left: 50%;
+    margin-left: -160px;
+
+    z-index: 9999;
+    position: fixed;
+    padding: 4px;
+    width: 320px;
+    box-sizing: border-box;
+    color: #fff;
+    background: #000;
+    align-self: flex-start;
   }
 `;

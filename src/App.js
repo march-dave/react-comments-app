@@ -5,6 +5,8 @@ import Home from "./Home";
 import Submit from "./Submit";
 import NoMatch from "./NoMatch";
 
+import Paginations from "./Paginations";
+
 class App extends Component {
   render() {
     return (
@@ -12,10 +14,11 @@ class App extends Component {
         <div>
           <Header />
           <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/submit" component={Submit} />
-          <Route component={NoMatch} />
-        </Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/submit" component={Submit} />
+            <Route path="/Paginations" component={Paginations} />
+            <Route component={NoMatch} />
+          </Switch>
         </div>
       </Router>
     );

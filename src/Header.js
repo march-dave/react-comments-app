@@ -13,6 +13,9 @@ class Header extends Component {
           <NavLink to="/submit" className="item" activeClassName="active">
             All List
           </NavLink>
+          <NavLink to="/Paginations" className="item" activeClassName="active">
+            Paginations
+          </NavLink>
         </div>
       </BodyStyle>
     );
@@ -45,7 +48,7 @@ const BodyStyle = styled.div`
 
   .item:active,
   .item.active {
-    background: #5c7cfa ;
+    background: #5c7cfa;
     color: white;
   }
 `;
