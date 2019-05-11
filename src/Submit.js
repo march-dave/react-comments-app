@@ -31,10 +31,10 @@ class Submit extends Component {
           }
         }
 
-        let data = {
-          "name": "Dave",
-          "body": "Dave Body"
-        }
+        // let data = {
+        //   "name": "Dave",
+        //   "body": "Dave Body"
+        // }
 
         // {
         //   "name": this.state.name,
