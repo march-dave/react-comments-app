@@ -24,11 +24,18 @@ class Submit extends Component {
 
     // .post("https://comments-api.azurewebsites.net/api/Comments", {
 
+      let config = {
+        headers: {
+          "Content-Type": "application/json",
+          'Access-Control-Allow-Origin': '*',
+          }
+        }
+
     axios
       .post("https://api-comments.azurewebsites.net/api/Comments", {
         name: this.state.name,
         body: this.state.body
-      })
+      }, config)
       .then(response => {
         toast(
           "Your name and body has been save. Plese go Home tab"
