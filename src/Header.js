@@ -13,9 +13,6 @@ class Header extends Component {
           <NavLink to="/submit" className="item" activeClassName="active">
             Input
           </NavLink>
-          <NavLink to="/todo" className="item" activeClassName="active">
-            Todo
-          </NavLink>
         </div>
       </BodyStyle>
     );
