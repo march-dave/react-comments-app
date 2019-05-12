@@ -1,16 +1,12 @@
 # react-comments-app
-A simple deployment ready webpack-react application for heroku
+A simple API call which is https://comments-api.azurewebsites.net/swagger/ comments
 
-## Instructions
+## Technology Stack
 
-1.  Clone this repo
-2.  Run `npm install`
-3.  Run `npm run dev`, **localhost:8080** will open up in your default browser
+1. React JS
+2. Webpack 4
+3. Axios api call
+4. ES6
 
-## Verify production code
-1. Run `webpack -p`
-2. Run `node server.js`, and visit **localhost:8080**, voila your code is ready for heroku now.
-
-
-## Heroku url
+## Cloue deploy app url
 https://ancient-dawn-45907.herokuapp.com/
