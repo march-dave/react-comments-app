@@ -5,28 +5,21 @@ import { listSort } from "./Utils";
 
 class Home extends Component {
   state = {
-    // comments: [],
-    comments: [
-      { id: 31, name: "Dave Lee", body: "Body" },
-      { id: 30, name: "Dave Lee", body: "Body" },
-      { id: 29, name: "Dave Lee", body: "Body" },
-      { id: 28, name: "Dave Lee", body: "Body" }
-    ],
+    comments: [],
     current: 3,
 
     currentPage: 1,
-    todosPerPage: 10,
-    todos: []
+    commentsPerPage: 10,
   };
 
   componentDidMount() {
     axios
-      .get("https://api-comments.azurewebsites.net/api/Comments")
+      // .get("https://api-comments.azurewebsites.net/api/Comments")
+      .get("https://comments-api.azurewebsites.net/api/Comments")
       .then(response => {
         console.log(response.data);
         this.setState({
-          // comments: response.data
-          todos: response.data
+          comments: response.data
         });
       });
   }
@@ -45,18 +38,17 @@ class Home extends Component {
   };
 
   render() {
-    const { todos, currentPage, todosPerPage } = this.state;
+    const { comments, currentPage, commentsPerPage } = this.state;
 
-    // Logic for displaying current todos
-    const indexOfLastTodo = currentPage * todosPerPage;
-    const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
-    const currentTodos = listSort(todos).slice(
-      indexOfFirstTodo,
-      indexOfLastTodo
+    // Logic for displaying current comments
+    const indexOfLastComment = currentPage * commentsPerPage;
+    const indexOfFirstComment = indexOfLastComment - commentsPerPage;
+    const currentComments = listSort(comments).slice(
+      indexOfFirstComment,
+      indexOfLastComment
     );
 
-    const renderTodos = currentTodos.map((todo, index) => (
-      // return <li key={index}>{JSON.stringify(todo)}</li>;
+    const renderComments = currentComments.map((comment, index) => (
       <div key={`${index + 1}`}>
         {
           <div
@@ -69,9 +61,9 @@ class Home extends Component {
               paddingTop: "15px"
             }}
           >
-            <div style={{ flexBasis: "150px" }}>{todo.id}</div>
-            <div style={{ flexBasis: "150px" }}>{todo.name}</div>
-            <div style={{ flexBasis: "150px" }}>{todo.body}</div>
+            <div style={{ flexBasis: "150px" }}>{comment.id}</div>
+            <div style={{ flexBasis: "150px" }}>{comment.name}</div>
+            <div style={{ flexBasis: "150px" }}>{comment.body}</div>
           </div>
         }
       </div>
@@ -79,7 +71,7 @@ class Home extends Component {
 
     // Logic for displaying page numbers
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(todos.length / todosPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(comments.length / commentsPerPage); i++) {
       pageNumbers.push(i);
     }
 
@@ -118,7 +110,7 @@ class Home extends Component {
           <ul id="page-numbers" style={{ marginLeft: "200px" }}>
             {renderPageNumbers}
           </ul>
-          {renderTodos}
+          {renderComments}
         </div>
       </BodyStyle>
     );

@@ -23,7 +23,8 @@ class Submit extends Component {
     data.preventDefault();
 
     axios
-      .post("https://api-comments.azurewebsites.net/api/Comments", {
+      // .post("https://api-comments.azurewebsites.net/api/Comments", {
+        .post("https://comments-api.azurewebsites.net/api/Comments", {
         name: this.state.name,
         body: this.state.body
       })
